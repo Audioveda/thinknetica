@@ -2,11 +2,12 @@ puts "Какой ты треугольник сегодня? Введите по
 a = gets.to_i
 b = gets.to_i
 c = gets.to_i
+a, b, c = [a, b, c].sort!
 result = "банальный, совершенно никакой"
 if a == b && b == c 
   result = "равносторонний"
 else 
-  if (a*a == (b*b + c*c)) || (b*b == (a*a + c*c)) || (c*c == (a*a + b*b)) 
+  if a**2 + b**2 == c**2 
     result = "прямоугольный"
     if a == b || b == c || c == a  
       result = result + "да еще и равнобедренный"
