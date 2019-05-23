@@ -1,12 +1,12 @@
 #help_url = "http://www.bolshoyvopros.ru/questions/299829-kak-sostavit-algoritm-reshenija-kvadratnogo-uravnenija.html"
 
 puts "Введите последовательно коэффициенты уравнения."
-a = gets.to_i
-b = gets.to_i
-c = gets.to_i
+a = gets.to_f
+b = gets.to_f
+c = gets.to_f
 
 puts "Итак, вот наше уравнение #{a}x² + #{b}x + #{c} = 0"
-d = b**2 - 4*a*c
+d = b**2 - 4 * a * c
 puts "Дискриминант D, который считаетсчя по формуле «D = (b² – 4ac)» равен у нас #{d}"
 
 if d > 0
