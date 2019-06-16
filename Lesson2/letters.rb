@@ -3,13 +3,13 @@
 alphabet = ('a'..'z').to_a 
 # создаем массив alphabet куда пихаем range из букв от a до z ('a'..'z')
 
-vowels_array = ["a", "e", "i", "o", "u", "y"] 
+vowels_array = %w[a e i o u y] 
 # создаем второй массив vowels_array чтобы потом пробежать по нему в цикле, пихая в хэш в качестве ключей
 
 vowels_hash = {} 
 # создаем пустой хэш
 
-vowels_array.each {|vowel| vowels_hash[vowel.to_s] = alphabet.index(vowel) + 1 } 
+vowels_array.each {|vowel| vowels_hash[vowel] = alphabet.index(vowel) + 1 } 
 =begin
   итак погнали: 
   бежим по массиву гласных 
