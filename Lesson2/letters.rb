@@ -9,7 +9,7 @@ vowels_array = %w[a e i o u y]
 vowels_hash = {} 
 # создаем пустой хэш
 
-vowels_array.each {|vowel| vowels_hash[vowel] = alphabet.index(vowel) + 1 } 
+vowels_array.each { |vowel| vowels_hash[vowel] = alphabet.index(vowel) + 1 } 
 =begin
   итак погнали: 
   бежим по массиву гласных 
