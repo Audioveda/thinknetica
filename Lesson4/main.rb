@@ -91,13 +91,13 @@ class Main
   end
 
   # креативный метод, который инстанцирует экземпляр класса station (после того как юзер даст название станции, если не было передано) и закидывает этот инстанс в массив основного класса main @stations (так происходит рождение новой станции)
-  def create_station(name)
-    if name.nil?
+  def create_station(title)
+    if title.nil?
       puts "Please enter station name"
-      name = gets.chomp
-      station = Station.new(name)
+      title = gets.chomp
+      station = Station.new(title)
     else
-      station = Station.new(name)
+      station = Station.new(title)
     end
     @stations << station
   end
