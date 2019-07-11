@@ -56,6 +56,13 @@ class Main
     end
   end
 
+  def seed 
+    create_station("Санкт-Петербург")
+    create_station("Москва")
+    create_station("Пермь")
+    create_station("Новосибирск")
+  end
+
   # закрываем внутренние вызовы методов работы с меню, никого не волнует как у нас тут всё внутри работает. Снаружи можно только запуститься методом run 
   private
   
@@ -83,11 +90,15 @@ class Main
     puts "0 - выйти назад в главное меню"
   end
 
-  # креативный метод, который инстанцирует экземпляр класса station (после того как юзер даст название станции) и закидывает этот инстанс в массив основного класса main @stations (так происходит рождение новой станции)
-  def create_station
-    puts "Please enter station name"
-    name = gets.chomp
-    station = Station.new(name)
+  # креативный метод, который инстанцирует экземпляр класса station (после того как юзер даст название станции, если не было передано) и закидывает этот инстанс в массив основного класса main @stations (так происходит рождение новой станции)
+  def create_station(name)
+    if name.nil?
+      puts "Please enter station name"
+      name = gets.chomp
+      station = Station.new(name)
+    else
+      station = Station.new(name)
+    end
     @stations << station
   end
 
@@ -102,6 +113,17 @@ class Main
     puts station
     puts "Поезда на станции #{station.name}:"
     show_collection(station.trains)
+  end
+
+  # метод выводящий интерфейс списка меню ГЛАВНОЕ МЕНЮ > МАРШРУТЫ
+  def show_routes_menu
+    puts "ГЛАВНОЕ МЕНЮ > МАРШРУТЫ"
+    puts "Введите 1 для создания маршрута"
+    puts "Введите 2 чтобы увидеть список всех маршрутов"
+    puts "Введите 3 чтобы рассмотреть конкретный маршрут"
+    puts "Введите 4 чтобы добавить станцию к марщруту"
+    puts "Введите 5 чтобы удалить станцию из марщрута"
+    puts "Введите 0 чтобы выйти в предыдущее меню"
   end
 
   # метод вызывающий подменю работы с маршрутами 
@@ -121,16 +143,6 @@ class Main
     end
   end
   
-  # метод выводящий интерфейс спсика меню
-  def show_routes_menu
-    puts "Введите 1 для создания маршрута"
-    puts "Введите 2 чтобы увидеть список всех маршрутов"
-    puts "Введите 3 чтобы рассмотреть конкретный маршрут"
-    puts "Введите 4 чтобы добавить станцию к марщруту"
-    puts "Введите 5 чтобы удалить станцию из марщрута"
-    puts "Введите 0 чтобы выйти в предыдущее меню"
-  end
-  
   # метод создающий маршрут
   def create_route
     
@@ -146,6 +158,8 @@ class Main
     first_station_index = select_from_collection(@stations)
     puts "Введите номер последней станции выбрав ее из списка"
     last_station_index = select_from_collection(@stations)
+    
+    # когда начальная и конечные станции заданы - создаем маршрут и добавляем его в список маршрутов
     route = Route.new(first_station_index, last_station_index)
     @routes << route
   end
@@ -396,9 +410,12 @@ class Main
     puts "========================"
   end
 
-end
 
+
+end
 
 # инстанцируем новую железную дорогу и запускаем на ней меню пользователя, можно начинать играть
 railway = Main.new
+railway.seed
 railway.run
+
