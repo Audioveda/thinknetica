@@ -16,6 +16,7 @@ user_year = gets.to_i
 # запрашиваем у юзера три числа: число месяц и год соответственно user_day, user_month, user_year
 
 month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
 def leap_year?(year)
   (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
 end

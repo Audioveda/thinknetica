@@ -12,13 +12,11 @@ class Station
   
   def initialize(title)
     @title = title
-    puts "«#{@title}» station is online"
     @trains = []
   end
 
   def park_train(train)
     @trains.push(train) unless @trains.include?(train)
-    puts "train №#{train.number} on platform"
   end
 
   def send_train(train)
@@ -26,6 +24,6 @@ class Station
   end
 
   def trains_by_type(type)
-    @trains.select {|train| train.type == type }.count
+    @trains.select { |train| train.type == type }.count
   end
 end
