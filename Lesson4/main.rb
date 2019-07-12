@@ -91,7 +91,7 @@ class Main
   end
 
   # креативный метод, который инстанцирует экземпляр класса station (после того как юзер даст название станции, если не было передано) и закидывает этот инстанс в массив основного класса main @stations (так происходит рождение новой станции)
-  def create_station(title)
+  def create_station(title=nil)
     if title.nil?
       puts "Please enter station name"
       title = gets.chomp
@@ -111,7 +111,7 @@ class Main
     puts "Please choice Station from the list bellow:"
     station = select_from_collection(@stations)
     puts station
-    puts "Поезда на станции #{station.name}:"
+    puts "Поезда на станции #{station.title}:"
     show_collection(station.trains)
   end
 
